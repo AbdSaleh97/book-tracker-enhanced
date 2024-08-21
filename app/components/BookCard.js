@@ -1,13 +1,9 @@
 import Image from 'next/image';
-import { books } from '../data/books';
-import useSortedBooks from '../custom_hook/useSortedBooks'; // Adjust the import path as needed
 
-function BookCards() {
-    const sortedBooks = useSortedBooks();
-
+function BookCards({ books }) {
     return (
         <div className="flex flex-wrap justify-center gap-4 p-4 bg-gray-50">
-            {sortedBooks.map((book) => (
+            {books.map((book) => (
                 <div
                     key={book.id}
                     className="flex flex-col items-center border rounded-lg bg-blue-100 shadow-lg p-4 max-w-xs"
