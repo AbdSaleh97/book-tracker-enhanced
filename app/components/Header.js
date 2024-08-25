@@ -1,9 +1,15 @@
 import Image from "next/image";
 import { useContext } from "react";
-import {ThemeContext}  from "./context/theme";
+import { ThemeContext } from "./context/theme";
+import { AuthContext } from "./context/auth";
 
 export default function Header() {
     const { isDarktheme, toggleThemeHandler } = useContext(ThemeContext);
+    const { token, username, login, setGlobalLoginState } = useContext(AuthContext);
+
+    function logout() {
+        setGlobalLoginState({ token: null, username: null, login });
+    }
 
     return (
         <nav className="flex items-center justify-between flex-wrap bg-cyan-900 p-6 dark:bg-black">
@@ -14,24 +20,42 @@ export default function Header() {
                     height={50}
                     alt="pet shop logo"
                 />
-                <span className="font-bold text-xl text-white uppercase ml-4">Pets Shop</span>
+                <span className="font-bold text-xl text-white uppercase ml-4">
+                    Pets Shop
+                </span>
             </div>
 
             <div className="block lg:hidden">
                 <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-                    <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
+                    <svg
+                        className="fill-current h-3 w-3"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <title>Menu</title>
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                    </svg>
                 </button>
             </div>
 
             <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                 <div className="text-sm lg:flex-grow">
-                    <a href="/" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                    <a
+                        href="/"
+                        className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                    >
                         Home
                     </a>
-                    <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                    <a
+                        href="#responsive-header"
+                        className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                    >
                         Pets
                     </a>
-                    <a href="/about_us" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+                    <a
+                        href="/about_us"
+                        className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+                    >
                         About us
                     </a>
                 </div>
@@ -44,6 +68,17 @@ export default function Header() {
                         {!isDarktheme ? 'Light Mode' : 'Dark Mode'}
                     </button>
                 </div>
+                {token ? (
+                    <>
+                        <p className="text-white mr-4">Welcome, {username}!</p>
+                        <button onClick={logout} className="bg-red-500 text-white px-4 py-2 rounded-md mr-4">
+                            Logout
+                        </button>
+
+                    </>
+                ) : (
+                    <p></p>
+                )}
             </div>
         </nav>
     );

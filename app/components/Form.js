@@ -34,7 +34,6 @@ function RegisterBookForm({ addNewBook }) {
             price: price,
             description: description,
         };
-
         addNewBook(newBook); // Add new book via callback
 
         const formData = `Book: ${bookTitle}, Author: ${author}, Genre: ${genre}, Published: ${publishedDate}, ISBN: ${isbn}`;
