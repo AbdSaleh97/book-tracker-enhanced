@@ -7,8 +7,7 @@ import { books as initialBooks } from './data/Books';
 import useSortedBooks from './custom_hook/useSortedBooks';
 import LoginForm from './components/LoginForm';
 import { AuthContext } from './components/context/auth';
-
-
+import Car_list from './components/Car_list';
 
 export default function Home() {
     const [books, setBooks] = useState(initialBooks);
@@ -22,7 +21,7 @@ export default function Home() {
         <div>
             {token ? <> <Hero />
                 <RegisterBookForm addNewBook={addNewBook} />
-                <BookCards books={sortedBooks} /> </> : <LoginForm />}
+                <BookCards books={sortedBooks} /> <Car_list/></> : <LoginForm />}
         </div>
     );
 }
