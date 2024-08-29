@@ -5,8 +5,8 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "./context/auth";
 import UpdateCarModal from "./Update_model";
 
-export default function Car_list() {
-    const { token } = useContext(AuthContext);
+export default function Car_list(token) {
+    // const { token } = useContext(AuthContext);
     const { resource, loading, deleteFun, updateCar } = useResource();
     const [decodedToken, setDecodedToken] = useState(null);
     const [selectedCar, setSelectedCar] = useState(null);
