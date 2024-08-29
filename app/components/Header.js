@@ -53,6 +53,13 @@ export default function Header() {
                         Pets
                     </a>
                     <a
+                        href="/cars"
+                        className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+                    >
+                        Update Car
+                    </a>
+
+                    <a
                         href="/about_us"
                         className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
                     >
