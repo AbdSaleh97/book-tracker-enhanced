@@ -11,7 +11,7 @@ export default function AuthWrapper({ children }) {
     });
 
     async function login(userInfo) {
-        const url = "http://localhost:8000/api/token/";
+        const url = process.env.NEXT_PUBLIC_API_URL+"api/token/";
         const res = await axios.post(url, userInfo);  // Removed the extra '='
         setGlobalLoginState((prev) => ({
             ...prev,
