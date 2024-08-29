@@ -9,15 +9,18 @@ export default function AuthWrapper({ children }) {
         token: null,
         username: null,  
         login: null,  
+        userId : null
     });
 
     async function login(userInfo) {
         const url = "http://localhost:8000/api/token/";
         const res = await axios.post(url, userInfo);
+        // console.log(res);
+        // const { id } = res.data;
         setGlobalLoginState((prev) => ({
             ...prev,
-            token: res.data,  // Store the token
-            username: userInfo.username,  // Store the username
+            token: res.data,  
+            username: userInfo.username,
         }));
     }
 

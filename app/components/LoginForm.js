@@ -11,7 +11,7 @@ export default function LoginForm() {
         e.preventDefault();
         const username = e.target.username.value;
         const password = e.target.password.value;
-        //login(userInfo   )
+        //login(userInfo)
         login({username,password})
     }
     return (
